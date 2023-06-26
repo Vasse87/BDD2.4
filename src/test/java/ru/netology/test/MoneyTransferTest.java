@@ -45,7 +45,7 @@ class MoneyTransferTest {
         var balanceCard1 = dashboardPage.getCardBalance(0);
         var balanceCard2 = dashboardPage.getCardBalance(1);
         var replenishmentPage = dashboardPage.transferToCard1();
-        int sum = DataHelper.generateSum(1,500);
+        int sum = DataHelper.generateSum(1, 500);
         var cardInfo = new DataHelper.CardInfo(DataHelper.getCardNumber2(), sum, balanceCard2);
         replenishmentPage.validTransfer(cardInfo);
         var newBalanceCard1 = dashboardPage.getCardBalance(0);
@@ -59,7 +59,7 @@ class MoneyTransferTest {
         var balanceCard1 = dashboardPage.getCardBalance(0);
         var balanceCard2 = dashboardPage.getCardBalance(1);
         var replenishmentPage = dashboardPage.transferToCard2();
-        int sum = DataHelper.generateSum(1,500);
+        int sum = DataHelper.generateSum(1, 500);
         var cardInfo = new DataHelper.CardInfo(DataHelper.getCardNumber1(), sum, balanceCard1);
         replenishmentPage.validTransfer(cardInfo);
         var newBalanceCard1 = dashboardPage.getCardBalance(0);
@@ -72,7 +72,7 @@ class MoneyTransferTest {
     void shouldShowErrorTransferMoreMoneyThanBalanceToCard1() {
         var balanceCard2 = dashboardPage.getCardBalance(1);
         var replenishmentPage = dashboardPage.transferToCard1();
-        int sum = DataHelper.generateSum(15000,20000);
+        int sum = DataHelper.generateSum(15000, 20000);
         var cardInfo = new DataHelper.CardInfo(DataHelper.getCardNumber2(), sum, balanceCard2);
         replenishmentPage.unvalidTransfer(cardInfo);
     }
@@ -81,7 +81,7 @@ class MoneyTransferTest {
     void shouldShowErrorTransferZero() {
         var balanceCard2 = dashboardPage.getCardBalance(1);
         var replenishmentPage = dashboardPage.transferToCard1();
-        int sum = DataHelper.generateSum(0,0);
+        int sum = DataHelper.generateSum(0, 0);
         var cardInfo = new DataHelper.CardInfo(DataHelper.getCardNumber2(), sum, balanceCard2);
         replenishmentPage.unvalidTransfer(cardInfo);
     }
@@ -91,7 +91,7 @@ class MoneyTransferTest {
         var balanceCard1 = dashboardPage.getCardBalance(0);
         var balanceCard2 = dashboardPage.getCardBalance(1);
         var replenishmentPage = dashboardPage.transferToCard2();
-        int sum = DataHelper.generateSum(10000,10000);
+        int sum = DataHelper.generateSum(10000, 10000);
         var cardInfo = new DataHelper.CardInfo(DataHelper.getCardNumber1(), sum, balanceCard1);
         replenishmentPage.validTransfer(cardInfo);
         var newBalanceCard1 = dashboardPage.getCardBalance(0);
@@ -119,7 +119,7 @@ class MoneyTransferTest {
         var balanceCard1 = dashboardPage.getCardBalance(0);
         var balanceCard2 = dashboardPage.getCardBalance(1);
         var replenishmentPage = dashboardPage.transferToCard1();
-        int sum = DataHelper.generateSum(1,10000);
+        int sum = DataHelper.generateSum(1, 10000);
         var cardInfo = new DataHelper.CardInfo("", sum, balanceCard2);
         replenishmentPage.unvalidTransfer(cardInfo);
         replenishmentPage.checkError();
@@ -130,7 +130,7 @@ class MoneyTransferTest {
         var balanceCard1 = dashboardPage.getCardBalance(0);
         var balanceCard2 = dashboardPage.getCardBalance(1);
         var replenishmentPage = dashboardPage.transferToCard1();
-        int sum = DataHelper.generateSum(1,500);
+        int sum = DataHelper.generateSum(1, 500);
         var cardInfo = new DataHelper.CardInfo(DataHelper.getCardNumber1(), sum, balanceCard1);
         replenishmentPage.validTransfer(cardInfo);
         var newBalanceCard1 = dashboardPage.getCardBalance(0);
@@ -144,7 +144,7 @@ class MoneyTransferTest {
         var balanceCard1 = dashboardPage.getCardBalance(0);
         var balanceCard2 = dashboardPage.getCardBalance(1);
         var replenishmentPage = dashboardPage.transferToCard1();
-        int sum = DataHelper.generateSum(1,500);
+        int sum = DataHelper.generateSum(1, 500);
         var cardInfo = new DataHelper.CardInfo(DataHelper.getCardNumber2(), sum, balanceCard2);
         replenishmentPage.cancelFilled(cardInfo);
         var newBalanceCard1 = dashboardPage.getCardBalance(0);

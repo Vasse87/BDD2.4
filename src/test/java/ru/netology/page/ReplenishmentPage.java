@@ -8,23 +8,22 @@ import ru.netology.data.DataHelper;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.getSelectedText;
 import static org.openqa.selenium.Keys.BACK_SPACE;
 
 public class ReplenishmentPage {
-    private SelenideElement sum = $("[data-test-id=amount] input");
-    private SelenideElement from = $("[data-test-id=from] input");
-    private SelenideElement transferButton = $("[data-test-id=action-transfer]");
-    private SelenideElement cancelButton = $("[data-test-id=action-cancel]");
-
-    private SelenideElement dashboard =  $(byText("Пополнение карты"));
-    private SelenideElement error = $("[data-test-id=error-notification]");
+    private final SelenideElement dashboard = $(byText("Пополнение карты"));
+    private final SelenideElement sum = $("[data-test-id=amount] input");
+    private final SelenideElement from = $("[data-test-id=from] input");
+    private final SelenideElement transferButton = $("[data-test-id=action-transfer]");
+    private final SelenideElement cancelButton = $("[data-test-id=action-cancel]");
+    private final SelenideElement error = $("[data-test-id=error-notification]");
 
     public ReplenishmentPage() {
         dashboard.shouldBe(visible);
         transferButton.shouldBe(visible);
         cancelButton.shouldBe(visible);
     }
+
     public DashboardPage validTransfer(DataHelper.CardInfo info) {
         sum.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
         from.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
@@ -49,7 +48,7 @@ public class ReplenishmentPage {
         error.shouldBe(Condition.visible);
     }
 
-    public DashboardPage cancelFilled (DataHelper.CardInfo info) {
+    public DashboardPage cancelFilled(DataHelper.CardInfo info) {
         sum.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
         from.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
         sum.setValue(String.valueOf(info.getSum()));
@@ -58,7 +57,7 @@ public class ReplenishmentPage {
         return new DashboardPage();
     }
 
-    public DashboardPage cancelEmpty () {
+    public DashboardPage cancelEmpty() {
         sum.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
         from.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
         cancelButton.click();
