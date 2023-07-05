@@ -25,41 +25,39 @@ public class ReplenishmentPage {
     }
 
     public DashboardPage validTransfer(DataHelper.CardInfo info) {
-        sum.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
-        from.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
-        sum.setValue(String.valueOf(info.getSum()));
-        from.setValue(info.getCardNumber());
-        transferButton.click();
+        fillData(info, transferButton);
         return new DashboardPage();
     }
 
-    public void unvalidTransfer(DataHelper.CardInfo info) {
-        sum.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
-        from.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
+    public void unValidTransfer(DataHelper.CardInfo info) {
+        fillData(info, transferButton);
+    }
+
+    private void fillData(DataHelper.CardInfo info, SelenideElement transferButton) {
+        clearFields();
         sum.setValue(String.valueOf(info.getSum()));
         from.setValue(info.getCardNumber());
         transferButton.click();
+    }
+
+    private void clearFields() {
+        sum.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
+        from.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
+    }
+
+    public void checkError(DataHelper.CardInfo info) {
         if (info.getBalance() < info.getSum() || info.getSum() == 0) {
-            checkError();
+            error.shouldBe(Condition.visible);
         }
     }
 
-    public void checkError() {
-        error.shouldBe(Condition.visible);
-    }
-
     public DashboardPage cancelFilled(DataHelper.CardInfo info) {
-        sum.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
-        from.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
-        sum.setValue(String.valueOf(info.getSum()));
-        from.setValue(info.getCardNumber());
-        cancelButton.click();
+        fillData(info, cancelButton);
         return new DashboardPage();
     }
 
     public DashboardPage cancelEmpty() {
-        sum.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
-        from.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
+        clearFields();
         cancelButton.click();
         return new DashboardPage();
     }

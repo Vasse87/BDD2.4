@@ -74,7 +74,8 @@ class MoneyTransferTest {
         var replenishmentPage = dashboardPage.transferToCard1();
         int sum = DataHelper.generateSum(15000, 20000);
         var cardInfo = new DataHelper.CardInfo(DataHelper.getCardNumber2(), sum, balanceCard2);
-        replenishmentPage.unvalidTransfer(cardInfo);
+        replenishmentPage.unValidTransfer(cardInfo);
+        replenishmentPage.checkError(cardInfo);
     }
 
     @Test
@@ -83,7 +84,8 @@ class MoneyTransferTest {
         var replenishmentPage = dashboardPage.transferToCard1();
         int sum = DataHelper.generateSum(0, 0);
         var cardInfo = new DataHelper.CardInfo(DataHelper.getCardNumber2(), sum, balanceCard2);
-        replenishmentPage.unvalidTransfer(cardInfo);
+        replenishmentPage.unValidTransfer(cardInfo);
+        replenishmentPage.checkError(cardInfo);
     }
 
     @Test
@@ -121,8 +123,8 @@ class MoneyTransferTest {
         var replenishmentPage = dashboardPage.transferToCard1();
         int sum = DataHelper.generateSum(1, 10000);
         var cardInfo = new DataHelper.CardInfo("", sum, balanceCard2);
-        replenishmentPage.unvalidTransfer(cardInfo);
-        replenishmentPage.checkError();
+        replenishmentPage.unValidTransfer(cardInfo);
+        replenishmentPage.checkError(cardInfo);
     }
 
     @Test
