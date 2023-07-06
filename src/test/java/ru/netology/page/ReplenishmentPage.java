@@ -45,10 +45,8 @@ public class ReplenishmentPage {
         from.sendKeys(Keys.CONTROL + "A", BACK_SPACE);
     }
 
-    public void checkError(DataHelper.CardInfo info) {
-        if (info.getBalance() < info.getSum() || info.getSum() == 0) {
-            error.shouldBe(Condition.visible);
-        }
+    public void checkError() {
+        error.shouldBe(Condition.visible);
     }
 
     public DashboardPage cancelFilled(DataHelper.CardInfo info) {

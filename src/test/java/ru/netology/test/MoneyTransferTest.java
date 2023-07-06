@@ -1,5 +1,6 @@
 package ru.netology.test;
 
+import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import static com.codeborne.selenide.Selenide.open;
 class MoneyTransferTest {
 
     DashboardPage dashboardPage;
+
 
     @BeforeEach
     public void setUp() {
@@ -75,7 +77,7 @@ class MoneyTransferTest {
         int sum = DataHelper.generateSum(15000, 20000);
         var cardInfo = new DataHelper.CardInfo(DataHelper.getCardNumber2(), sum, balanceCard2);
         replenishmentPage.unValidTransfer(cardInfo);
-        replenishmentPage.checkError(cardInfo);
+        replenishmentPage.checkError();
     }
 
     @Test
@@ -85,7 +87,7 @@ class MoneyTransferTest {
         int sum = DataHelper.generateSum(0, 0);
         var cardInfo = new DataHelper.CardInfo(DataHelper.getCardNumber2(), sum, balanceCard2);
         replenishmentPage.unValidTransfer(cardInfo);
-        replenishmentPage.checkError(cardInfo);
+        replenishmentPage.checkError();
     }
 
     @Test
@@ -124,7 +126,7 @@ class MoneyTransferTest {
         int sum = DataHelper.generateSum(1, 10000);
         var cardInfo = new DataHelper.CardInfo("", sum, balanceCard2);
         replenishmentPage.unValidTransfer(cardInfo);
-        replenishmentPage.checkError(cardInfo);
+        replenishmentPage.checkError();
     }
 
     @Test
